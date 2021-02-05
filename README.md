@@ -33,4 +33,4 @@ This project is under an MIT license. Please check the [LICENSE](LICENSE.md) for
 
 ---
 
-Made 💜 by Pedro Lopes
+Made 💜  by [Pedro Lopes](https://www.pedroclopes.com)
