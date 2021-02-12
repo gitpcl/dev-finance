@@ -1,16 +1,33 @@
 /* GLOBAL =================== */
 :root{
-    --bg-color: #f0f2f5;
+    /* Background colors */
+    --bg: #f0f2f5;
     --bg-overlay-color: rgba(0,0,0,0.7);
     --bg-modal-color: #F0F2f5;
-    --white-color: #fff;
+    --bg-table: #fff;
+    --bg-card: #fff;
+
+    /* Text colors */
+    --text: #fff;
+    --text-description: #363f5f;
+    --text-h2:#363f5f;
+    --text-header: #363f5f;
+    --text-table: #363f5f;
+    --text-footer: #363f5f;
+
+    /* Blue Colors */
     --blue-dark-color: #363f5f;
     --blue-light-color: #969cb3;
+
+    /* Green Colors */
     --green-light-color: #49AA26;
     --green-dark-color: #2D4A22;
     --green-color: #12a454;
     --green-hover-color: #3dd705;
+
+    /* Alert Color */
     --red-color: #e92929;
+
 }
 
 * {
@@ -23,8 +40,38 @@ html {
     font-size: 93.75%; /* 15px */
 }
 
+html[data-theme='dark'] {
+    /* Background colors */
+    --bg: #18191a;
+    --bg-modal-color: #2e2e2e;
+    --bg-table: #3a3b3c;
+
+    /* Text colors */
+    --text: #fff;
+    --text-description: #b0b3b8;
+    --text-h2:#b0b3b8;
+    --text-header: #3a3b3c;
+    --text-table: #b0b3b8;
+    --text-footer: #b0b3b8;
+
+    /* Blue Colors */
+    --blue-dark-color: #3a3b3c;
+    --blue-light-color: #e4e6eb;
+
+    /* Green Colors */
+    --green-dark-color: #3a3b3c;
+}
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
+}
+
 body {
-    background: var(--bg-color);
+    background: var(--bg);
     font-family: 'Poppins', sans-serif;
 }
 
@@ -70,7 +117,7 @@ button {
     height: 50px;
 
     border:none;
-    color: var(--white-color);
+    color: var(--text);
     background: var(--green-light-color);
 
     padding: 0;
@@ -107,6 +154,51 @@ button:hover {
     opacity: 1;
 }
 
+/* TOGGLE =================== */
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 52px;
+	height: 27px;
+	background: var(--blue-light-color);
+	border-radius: 100px;
+	position: absolute;
+    top:2rem;
+    right: 2rem;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+input:checked + label {
+	background: var(--green-hover-color);
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+label:active:after {
+	width: 45px;
+}
+
+
 /* HEADER =================== */
 header {
     background: var(--green-dark-color);
@@ -115,8 +207,9 @@ header {
 }
 
 #logo {
-    color: var(--white-color);
+    color: var(--text);
     font-weight: 100;
+
 }
 
 /* BALANCE =================== */
@@ -125,12 +218,12 @@ header {
 }
 
 #balance h2 {
-    color: var(--white-color);
+    color: var(--text);
 }
 
 /* CARDS =================== */
 .card {
-    background: var(--white-color);
+    background: var(--bg-card);
     padding: 1.5rem 2rem;
     border-radius: 0.25rem;
 
@@ -160,7 +253,7 @@ header {
 .card.total {
     background: var(--green-light-color);
 
-    color: var(--white-color);
+    color: var(--text);
 }
 
 /* TABLE =================== */
@@ -187,12 +280,13 @@ table tbody tr td:last-child {
 }
 
 table thead th {
-    background: var(--white-color);
+    background: var(--bg-table);
 
     font-weight: normal;
     padding: 1rem 2rem;
 
     text-align: left;
+    
 }
 
 table tbody tr {
@@ -204,13 +298,13 @@ table tbody tr:hover {
 }
 
 table tbody td {
-    background: var(--white-color);
+    background: var(--bg-table);
 
     padding: 1rem 2rem;
 }
 
 td.description {
-    color: var(--blue-dark-color);
+    color: var(--text-description);
 }
 
 td.income {
@@ -262,6 +356,7 @@ td.expense {
 
 #form h2 {
     margin-top: 0;
+    color: var(--text-h2);
 }
 
 input {
@@ -279,6 +374,7 @@ input {
 
 .input-group .help {
     opacity: 0.4;
+    color: var(--text-h2);
 }
 
 .input-group.actions {
@@ -296,7 +392,7 @@ input {
 footer {
     text-align: center;
     padding: 4rem 0 2rem;
-    color: var(--blue-dark-color);
+    color: var(--text-footer);
 
     opacity:0.6;
 }
